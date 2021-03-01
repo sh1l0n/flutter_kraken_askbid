@@ -15,18 +15,25 @@ Using [Google Charts](https://github.com/google/charts) for displaying data:
 </p>
 
 ### How it works
+
+- Get flutter packages
+```
+chmod +x update.sh
+./update.sh
+```
+
 - First run the server
 ```
 dart lib/server.dart
 ```
 
-- Set the ip of the device where you will the server
+- Set your server IP into **libs/lib_requests/lib.server_api.dart**
 
 ```
-**libs/lib_requests/lib.server_api.dart**
 Line 23: String get apiUrl => 'http://192.168.1.7:4040';
 ```
 
+- Run
 ```
 flutter run lib/main.dart
 ```
