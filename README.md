@@ -13,24 +13,24 @@ Using [Google Charts](https://github.com/google/charts) for displaying data:
 
 ### How it works
 
-- Get flutter packages
+1. Get flutter packages
 ```
 chmod +x update.sh
 ./update.sh
 ```
 
-- First run the server
+2. First run the server
 ```
 dart lib/server.dart
 ```
 
-- Set your server IP into **libs/lib_requests/lib.server_api.dart**
+3. Set your server IP into **libs/lib_requests/lib.server_api.dart**
 
 ```
 Line 23: String get apiUrl => 'http://192.168.1.7:4040';
 ```
 
-- Run
+4. Run client
 ```
 flutter run lib/main.dart
 ```
