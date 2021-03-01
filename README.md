@@ -1,4 +1,4 @@
-# Flutter Kraken bids/aks
+# Flutter Kraken bids/aks charts
 
 Simple app which displays the amount of the first bid and ask order each 2 seconds interval as minimun (depends the network).
 
@@ -12,17 +12,23 @@ Using [Google Charts](https://github.com/google/charts) for displaying data.
 </p>
 
 ## Main Features
+
 - Line and Bars charts.
 - "Real time chart" (using GET requests instead WebSockets).
-- Chart scrolling and zooming.
+- Chart scrolling.
+- Early version of chart zooming.
 - Full screen view of the charts.
 - Follow updated (Last) with custom user zooming.
 - The data is cleared before every run action. 
-- Server request middleware.
+- HTTP Server working as middleware between client and Kraken.
 - Integration testing MySQL database.
 - Unit testing HTTP requests.
 - State managment, run/stop shared between screens (saved until app closed).
 - State managment, full/last depends of the current displayed screen (saved until app closed).
+- Detects network connection error.
+- HTTP request feedback to the user.
+
+Also there are some knowed [issues](https://github.com/sh1l0n/flutter_kraken_askbid/issues)
 
 ## Getting started
 
