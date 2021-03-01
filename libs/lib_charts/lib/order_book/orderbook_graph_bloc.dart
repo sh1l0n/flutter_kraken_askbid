@@ -11,8 +11,6 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:charts_flutter/flutter.dart' as charts;
-
 import 'package:lib_model/order.dart';
 
 enum OrderBookSymbol {
@@ -136,32 +134,6 @@ class OrderBookGraphBloc {
     }
 
     return DateTimeInterval(start: start, end: end);
-  }
-
-  charts.DateTimeTickProviderSpec generateXAxisSpec(
-      final List<OrderWrapper> data) {
-    // ignore: omit_local_variable_types
-    List<charts.TickSpec<DateTime>> timers = [];
-    for (var i = 0; i < data.length; i++) {
-      final serie = data[i];
-      final time = DateTime.fromMillisecondsSinceEpoch(serie.timestamp);
-      // final label = '$i';
-      final label = '${time.hour}:${time.minute}:${time.second}';
-      timers += [charts.TickSpec<DateTime>(time, label: label)];
-    }
-    return charts.StaticDateTimeTickProviderSpec(timers);
-  }
-
-  charts.NumericTickProviderSpec generateYAxisSpec(final double maxValue) {
-    // ignore: omit_local_variable_types
-    List<charts.TickSpec<double>> data = [];
-    final _maxValue = (1.25*maxValue).floor().toInt();
-    final inc = 0.1;
-    for (var i = 0; i <= _maxValue; i++) {
-      final value = inc * i * _maxValue;
-      data += [charts.TickSpec<double>(value)];
-    }
-    return charts.StaticNumericTickProviderSpec(data);
   }
 
   void _refreshChart() {

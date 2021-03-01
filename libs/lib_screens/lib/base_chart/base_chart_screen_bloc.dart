@@ -47,7 +47,6 @@ class BaseChartScreenBLoC {
     _notifyServerUpdating(true);
     final timestamp = DateTime.now().millisecondsSinceEpoch;
     final update = await ServerApi().getBooks();
-    print('update: $update');
     if( update != null) {
       final bid = OrderWrapper(update.bid.price, update.bid.amount, timestamp);
       final ask = OrderWrapper(update.ask.price, update.ask.amount, timestamp);

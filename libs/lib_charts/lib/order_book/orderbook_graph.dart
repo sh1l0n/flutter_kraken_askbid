@@ -68,6 +68,31 @@ abstract class OrderBookGraph extends StatelessWidget {
     ];
   }
 
+  charts.DateTimeTickProviderSpec generateXAxisSpec() {
+    // ignore: omit_local_variable_types
+    List<charts.TickSpec<DateTime>> timers = [];
+    for (var i = 0; i < bids.length; i++) {
+      final serie = bids[i];
+      final time = DateTime.fromMillisecondsSinceEpoch(serie.timestamp);
+      // final label = '$i';
+      final label = '${time.hour}:${time.minute}:${time.second}';
+      timers += [charts.TickSpec<DateTime>(time, label: label)];
+    }
+    return charts.StaticDateTimeTickProviderSpec(timers);
+  }
+
+  charts.NumericTickProviderSpec generateYAxisSpec() {
+    // ignore: omit_local_variable_types
+    List<charts.TickSpec<double>> data = [];
+    final _maxValue = (1.25 * maxValueY).floor().toInt();
+    final inc = 0.1;
+    for (var i = 0; i <= _maxValue; i++) {
+      final value = inc * i * _maxValue;
+      data += [charts.TickSpec<double>(value)];
+    }
+    return charts.StaticNumericTickProviderSpec(data);
+  }
+
   Widget buildTimeLine() {
     final interval = bloc.generateViewportInterval(bids);
     return charts.TimeSeriesChart(
@@ -76,7 +101,7 @@ abstract class OrderBookGraph extends StatelessWidget {
       animate: false,
       dateTimeFactory: charts.LocalDateTimeFactory(),
       primaryMeasureAxis: charts.NumericAxisSpec(
-        tickProviderSpec: bloc.generateYAxisSpec(maxValueY),
+        tickProviderSpec: generateYAxisSpec(),
         showAxisLine: true,
         renderSpec: charts.SmallTickRendererSpec(
             minimumPaddingBetweenLabelsPx: 0,
@@ -113,7 +138,7 @@ abstract class OrderBookGraph extends StatelessWidget {
             transitionFormat: 'mm:ss',
           ),
         ),
-        tickProviderSpec: bloc.generateXAxisSpec(bids),
+        tickProviderSpec: generateXAxisSpec(),
         renderSpec: charts.SmallTickRendererSpec(
           minimumPaddingBetweenLabelsPx: 0,
           labelRotation: 90,
