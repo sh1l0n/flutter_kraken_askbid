@@ -19,6 +19,9 @@ Using [Google Charts](https://github.com/google/charts) for displaying data.
 - Early version of chart zooming.
 - Full screen view of the charts.
 - Follow updated (Last) with custom user zooming.
+- The data is saved in client using a [SQL database](https://github.com/tekartik/sqflite).
+- The data is available for the whole app.
+- Use Cache memory for quickly accessing.
 - The data is cleared before every run action. 
 - HTTP Server working as middleware between client and Kraken.
 - Integration testing MySQL database.
