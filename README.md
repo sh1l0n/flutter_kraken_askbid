@@ -1,6 +1,6 @@
 ## Flutter Kraken bids/aks
 
-Simple app which displays the amount of the first bid and ask order each in 2 seconds interval as minimun (depends the network).
+Simple app which displays the amount of the first bid and ask order each 2 seconds interval as minimun (depends the network).
 
 The orderbook is retrieved from the public endpoints of the [Kraken Exchange](https://www.kraken.com/)
 
