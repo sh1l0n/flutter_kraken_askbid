@@ -43,7 +43,7 @@ In order to run the app, you need to follow the next steps
 2. Clone and navigate to project root folder
 ```
 git clone -b master git@github.com:sh1l0n/flutter_kraken_askbid.git
-cd flutter_kraken_bidasks/
+cd flutter_kraken_askbid/
 ```
 
 3. Get flutter packages
