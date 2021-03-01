@@ -6,12 +6,9 @@ The orderbook is retrieved from the public endpoints of the [Kraken Exchange](ht
 
 Using [Google Charts](https://github.com/google/charts) for displaying data:
 
-<p align="center"> 
-<img src="doc/images/lines_screenshot.jpg">
-</p>
-
-<p align="center"> 
-<img src="doc/images/bars_screenshot.jpg">
+<p align="center">
+<img src="doc/images/lines_screenshot.jpg" width="45%"/> 
+<img  src="doc/images/bars_screenshot.jpg" width="45%"/> 
 </p>
 
 ### How it works
@@ -49,3 +46,6 @@ flutter test test/kraken_api_test.dart
 ```
 flutter drive --driver integration_test/driver.dart --target integration_test/database_test.dart
 ```
+
+### Licensed
+GPLv3
