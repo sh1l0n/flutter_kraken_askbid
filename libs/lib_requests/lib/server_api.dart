@@ -28,14 +28,14 @@ class ServerApi {
   Future<OrderBookUpdateWrapper> getBooks() async {
 
     var completer = Completer<OrderBookUpdateWrapper>();
-
-    print('getbooks');
      
     try {
       final response = await http.get(apiUrl, headers: headers);
       if (response.statusCode == 200) {
         final jsonData = jsonDecode(response.body);
-        completer.complete(OrderBookUpdateWrapper.fromMap(jsonData));
+        final update = OrderBookUpdateWrapper.fromMap(jsonData);
+        print('update: $update');
+        completer.complete(update);
       } else {
         completer.complete(null);
       }

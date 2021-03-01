@@ -22,10 +22,13 @@ class OrderWrapper {
       {priceColumn: price, amountColumn: amount, timestampColumn: timestamp};
 
   static OrderWrapper fromMap(final Map<String, dynamic> data) {
+    print('OrderWrapper.fromMap: $data');
     final price = data[OrderWrapper.priceColumn] as double;
+    print('price: $price');
     final amount = data[OrderWrapper.amountColumn] as double;
+    print('amount: $amount');
     final timestamp = data[OrderWrapper.timestampColumn] as int;
-    ;
+    print('timestamp: $timestamp');
     return OrderWrapper(price, amount, timestamp);
   }
 
