@@ -30,8 +30,6 @@ class OrderBookBarsGraph extends OrderBookGraph {
 
   @override
   charts.SeriesRendererConfig<DateTime> generateRender() {
-    return charts.BarRendererConfig<DateTime>(
-      cornerStrategy: const charts.ConstCornerStrategy(15)
-    );
+    return charts.BarRendererConfig<DateTime>();
   }
 }
