@@ -23,13 +23,14 @@ Using [Google Charts](https://github.com/google/charts) for displaying data.
 - The data is available for the whole app.
 - Use Cache memory for quickly accessing.
 - The data is cleared before every run action. 
-- HTTP Server working as middleware between client and Kraken.
-- Integration testing MySQL database.
-- Unit testing HTTP requests.
-- State managment, run/stop shared between screens (saved until app closed).
-- State managment, full/last depends of the current displayed screen (saved until app closed).
 - Detects network connection error.
 - HTTP request feedback to the user.
+- Unit testing HTTP requests.
+- Route navigation between screens
+- State managment, run/stop shared between screens (saved until app closed).
+- State managment, full/last depends of the current displayed screen (saved until app closed).
+- Integration testing MySQL database.
+- HTTP Server working as middleware between client and Kraken.
 
 Also there are some knowed [issues](https://github.com/sh1l0n/flutter_kraken_askbid/issues)
 
