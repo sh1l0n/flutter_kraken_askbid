@@ -21,6 +21,10 @@ class BaseChartScreenBLoC {
   Stream<bool> get changeStateStream => _changeStateStreamController.stream;
   Sink<bool> get _changeStateSink => _changeStateStreamController.sink;
 
+  final _networkErrorStreamController = StreamController<bool>.broadcast();
+  Stream<bool> get networkErrorStream => _networkErrorStreamController.stream;
+  Sink<bool> get _networkErrorSink => _networkErrorStreamController.sink;
+
   final _gettingServerDataStreamController = StreamController<bool>.broadcast();
   Stream<bool> get gettingServerDataStream =>
       _gettingServerDataStreamController.stream;
@@ -53,6 +57,8 @@ class BaseChartScreenBLoC {
 
       await ExchangeWrapperProvider.update(exchangeName, bid, ask);
       KrakenMemoryCache().update(bid: bid, ask: ask);
+    } else {
+      _notifyNetworkError();
     }
     _notifyServerUpdating(false);
   }
@@ -98,6 +104,13 @@ class BaseChartScreenBLoC {
     }
   }
 
+    void _notifyNetworkError() {
+    if (_networkErrorStreamController.hasListener &&
+        _networkErrorSink != null) {
+      _networkErrorSink.add(true);
+    }
+  }
+
   void pause() {
     if (_isRunning) {
       _isRunning = false;
@@ -121,5 +134,6 @@ class BaseChartScreenBLoC {
     _changeStateStreamController.close();
     _updateBooksController.close();
     _gettingServerDataStreamController.close();
+    _networkErrorStreamController.close();
   }
 }

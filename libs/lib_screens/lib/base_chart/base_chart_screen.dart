@@ -35,6 +35,32 @@ class BaseChartScreenState extends BaseScreenState {
   BaseChartScreenBLoC get chartScreenBloc =>
       (widget as BaseChartScreen).chartScreenBloc;
 
+
+  @override
+  void initState() {
+    super.initState();
+    chartScreenBloc.networkErrorStream.listen((event) { 
+      buildSnackbar();
+    });
+  }
+
+  void buildSnackbar() {
+    chartScreenBloc.pause();
+    final snackBar = SnackBar(
+      content: Text('Ups! Cannot get data from server'),
+      action: SnackBarAction(
+        label: 'Try again?',
+        onPressed: () {
+          chartScreenBloc.run();
+          // Some code to undo the change.
+        },
+      ),
+    );
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
+
   Widget buildButton(
       final Function onPressed, final IconData iconCode, final String text,
       {bool highlighted = false}) {
